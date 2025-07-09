@@ -13,6 +13,8 @@ namespace ConfigurationReader
         private readonly ConcurrentDictionary<string, string> _cache;
         private readonly System.Timers.Timer _timer;
 
+        public string ApplicationName { get; }
+
         public ConfigurationReader(ConfigurationDbContext dbContext, string applicationName, int refreshIntervalMs)
         {
             _applicationName = applicationName;
@@ -27,6 +29,9 @@ namespace ConfigurationReader
             _timer.Elapsed += async (s, e) => await LoadConfigurationsAsync();
             _timer.AutoReset = true;
             _timer.Enabled = true;
+
+            ApplicationName = applicationName;
+
         }
 
         private ConcurrentDictionary<string, string> _cacheLoad = new();

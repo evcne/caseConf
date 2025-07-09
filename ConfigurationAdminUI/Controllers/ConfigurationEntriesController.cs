@@ -12,18 +12,24 @@ namespace ConfigurationAdminUI.Controllers
     {
         private readonly ConfigurationDbContext _context;
         private readonly IHubContext<ConfigHub> _hubContext;
+        private readonly string _applicationName;
+        private readonly ConfigurationReader.ConfigurationReader _reader;
 
-        public ConfigurationEntriesController(ConfigurationDbContext context, IHubContext<ConfigHub> hubContext)
+        public ConfigurationEntriesController(ConfigurationDbContext context,
+        IHubContext<ConfigHub> hubContext,
+        ConfigurationReader.ConfigurationReader reader)
         {
             _context = context;
             _hubContext = hubContext;
+            _reader = reader;
+            _applicationName = reader.ApplicationName;
 
         }
 
         public async Task<IActionResult> Index(string search = "")
         {
             var entries = await _context.ConfigurationEntries
-                .Where(e => e.Name.Contains(search) && e.IsActive)
+                .Where(e => e.Name.Contains(search) && e.IsActive && e.ApplicationName == _applicationName)
                 .ToListAsync();
             return View(entries);
         }
@@ -73,7 +79,16 @@ namespace ConfigurationAdminUI.Controllers
 
             if (ModelState.IsValid)
             {
-                _context.Update(entry);
+                var local = _context.ConfigurationEntries.Local
+                    .FirstOrDefault(e => e.Id == entry.Id);
+
+                    if (local != null)
+                    {
+                        _context.Entry(local).State = EntityState.Detached;
+                    }
+
+                    _context.Entry(entry).State = EntityState.Modified;
+                //_context.Update(entry);
                 await _context.SaveChangesAsync();
                 await _hubContext.Clients.All.SendAsync("ConfigurationChanged", entry.Name);
                 return RedirectToAction(nameof(Index));

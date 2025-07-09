@@ -21,6 +21,7 @@ C:\xampp\htdocs\caseConfyeni\caseConf\ConfigurationReader\obj\Debug\net8.0\Confi
 C:\xampp\htdocs\caseConfyeni\caseConf\ConfigurationReader\obj\Debug\net8.0\ConfigurationReader.AssemblyInfoInputs.cache
 C:\xampp\htdocs\caseConfyeni\caseConf\ConfigurationReader\obj\Debug\net8.0\ConfigurationReader.AssemblyInfo.cs
 C:\xampp\htdocs\caseConfyeni\caseConf\ConfigurationReader\obj\Debug\net8.0\ConfigurationReader.csproj.CoreCompileInputs.cache
+C:\xampp\htdocs\caseConfyeni\caseConf\ConfigurationReader\obj\Debug\net8.0\ConfigurationReader.sourcelink.json
 C:\xampp\htdocs\caseConfyeni\caseConf\ConfigurationReader\obj\Debug\net8.0\ConfigurationReader.dll
 C:\xampp\htdocs\caseConfyeni\caseConf\ConfigurationReader\obj\Debug\net8.0\refint\ConfigurationReader.dll
 C:\xampp\htdocs\caseConfyeni\caseConf\ConfigurationReader\obj\Debug\net8.0\ConfigurationReader.pdb

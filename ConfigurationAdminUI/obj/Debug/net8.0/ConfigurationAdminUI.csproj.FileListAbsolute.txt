@@ -172,6 +172,7 @@ C:\xampp\htdocs\caseConfyeni\caseConf\ConfigurationAdminUI\obj\Debug\net8.0\Conf
 C:\xampp\htdocs\caseConfyeni\caseConf\ConfigurationAdminUI\obj\Debug\net8.0\ConfigurationAdminUI.MvcApplicationPartsAssemblyInfo.cache
 C:\xampp\htdocs\caseConfyeni\caseConf\ConfigurationAdminUI\obj\Debug\net8.0\ConfigurationAdminUI.RazorAssemblyInfo.cache
 C:\xampp\htdocs\caseConfyeni\caseConf\ConfigurationAdminUI\obj\Debug\net8.0\ConfigurationAdminUI.RazorAssemblyInfo.cs
+C:\xampp\htdocs\caseConfyeni\caseConf\ConfigurationAdminUI\obj\Debug\net8.0\ConfigurationAdminUI.sourcelink.json
 C:\xampp\htdocs\caseConfyeni\caseConf\ConfigurationAdminUI\obj\Debug\net8.0\staticwebassets.build.json
 C:\xampp\htdocs\caseConfyeni\caseConf\ConfigurationAdminUI\obj\Debug\net8.0\staticwebassets.development.json
 C:\xampp\htdocs\caseConfyeni\caseConf\ConfigurationAdminUI\obj\Debug\net8.0\staticwebassets\msbuild.ConfigurationAdminUI.Microsoft.AspNetCore.StaticWebAssets.props

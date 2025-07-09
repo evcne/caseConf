@@ -14,7 +14,7 @@ builder.Services.AddDbContext<ConfigurationDbContext>(options =>
 });
 
 // ConfigurationReader servis olarak ekleniyor
-builder.Services.AddSingleton<ConfigurationReader.ConfigurationReader>(provider =>
+builder.Services.AddScoped<ConfigurationReader.ConfigurationReader>(provider =>
 {
     var dbContext = provider.GetRequiredService<ConfigurationDbContext>();
     return new ConfigurationReader.ConfigurationReader(dbContext, "SERVICE-A", 10000);
