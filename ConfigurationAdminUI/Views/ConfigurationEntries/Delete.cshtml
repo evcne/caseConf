@@ -1,0 +1,28 @@
+@model ConfigurationReader.Models.ConfigurationEntry
+
+@{
+    ViewData["Title"] = "Silme Onayı";
+}
+
+<h2 class="text-danger">Silme Onayı</h2>
+
+<p>Bu kaydı silmek istediğinize emin misiniz?</p>
+
+<div class="border p-3 rounded bg-light">
+    <dl class="row">
+        <dt class="col-sm-3">Ad</dt>
+        <dd class="col-sm-9">@Model.Name</dd>
+
+        <dt class="col-sm-3">Değer</dt>
+        <dd class="col-sm-9">@Model.Value</dd>
+
+        <dt class="col-sm-3">Uygulama</dt>
+        <dd class="col-sm-9">@Model.ApplicationName</dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Sil</button>
+        <a asp-action="Index" class="btn btn-secondary">Vazgeç</a>
+    </form>
+</div>

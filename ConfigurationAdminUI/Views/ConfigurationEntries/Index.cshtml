@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ConfigurationReader.Models.ConfigurationEntry>
+@{
+    ViewData["Title"] = "Konfigürasyon Listesi";
+}
+
+<h2 class="mb-3">Konfigürasyon Listesi</h2>
+
+<form class="mb-3 d-flex" method="get">
+    <input type="text" name="search" class="form-control me-2" placeholder="Ara..." />
+    <button type="submit" class="btn btn-outline-primary">Filtrele</button>
+</form>
+
+<a href="/ConfigurationEntries/Create" class="btn btn-success mb-3">+ Yeni Ekle</a>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>Ad</th>
+            <th>Tip</th>
+            <th>Değer</th>
+            <th>Aktif</th>
+            <th>Uygulama</th>
+            <th>İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Type</td>
+                <td>@item.Value</td>
+                <td>@item.IsActive</td>
+                <td>@item.ApplicationName</td>
+                <td>
+                    <a class="btn btn-sm btn-warning" href="/ConfigurationEntries/Edit/@item.Id">Düzenle</a>
+                    <a class="btn btn-sm btn-danger" href="/ConfigurationEntries/Delete/@item.Id">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+<script>
+    // SignalR bağlantısını kur
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/confighub") // SignalR Hub route'u
+        .build();
+
+    connection.start().then(() => {
+        console.log("SignalR bağlantısı kuruldu.");
+    }).catch(err => console.error("Bağlantı hatası:", err));
+
+    // Sunucudan gelen mesajı dinle
+    connection.on("ConfigurationChanged", function (key) {
+        alert("Konfigürasyon değişti: " + key);
+        // veya sayfayı yeniden yükle
+        location.reload();
+    });
+</script>
+
